@@ -18,6 +18,7 @@
   --grey-light:#E8E4DC;
   --grey-mid:  #9A9590;
   --text-dark: #1A1208;
+  color-scheme: light;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -29,7 +30,7 @@
   --shadow-gold: 0 4px 24px rgba(184,149,63,0.25);
 }
 
-html { scroll-behavior: smooth; color-scheme: only light; }
+html { scroll-behavior: smooth; color-scheme: light; }
 
 body {
   font-family: var(--font-body);
