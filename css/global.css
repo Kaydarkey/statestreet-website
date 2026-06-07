@@ -29,7 +29,7 @@
   --shadow-gold: 0 4px 24px rgba(184,149,63,0.25);
 }
 
-html { scroll-behavior: smooth; color-scheme: light; }
+html { scroll-behavior: smooth; color-scheme: only light; }
 
 body {
   font-family: var(--font-body);
