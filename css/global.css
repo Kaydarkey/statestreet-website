@@ -18,7 +18,7 @@
   --grey-light:#E8E4DC;
   --grey-mid:  #9A9590;
   --text-dark: #1A1208;
-  color-scheme: light;
+  color-scheme:only light;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -30,12 +30,14 @@
   --shadow-gold: 0 4px 24px rgba(184,149,63,0.25);
 }
 
-html { scroll-behavior: smooth; color-scheme: light; }
+html { scroll-behavior: smooth; color-scheme:only light; forced-color-adjust: none; forced-colors: none; }
 
 body {
   font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--navy);
+  background: var(--cream) !important;
+  color: var(--navy) !important;
+  forced-color-adjust: none;
+  forced-colors: none;
   overflow-x: hidden;
   font-size: 16px;
   line-height: 1.7;
@@ -373,4 +375,19 @@ h1, h2, h3, h4 {
   .nav__hamburger { display: flex; }
   .footer__top { grid-template-columns: 1fr; gap: 2rem; }
   .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    color-scheme: only light;
+    forced-color-adjust: none;
+    forced-colors: none;
+    background: var(--cream) !important;
+    background-color: var(--cream) !important;
+    color: var(--navy) !important;
+  }
+  body {
+    color: var(--navy) !important;
+    background: var(--cream) !important;
+  }
 }
