@@ -185,10 +185,16 @@ h1, h2, h3, h4 {
 .nav__logo img,
 .footer__logo img {
   width: auto;
+  max-width: 14rem;
   max-height: 3rem;
-  max-width: 10rem;
+  height: 3rem;
   object-fit: contain;
   display: block;
+}
+.nav__logo img {
+  width: auto;
+  max-width: 100%;
+  height: 3rem;
 }
 .footer__logo {
   display: flex;
