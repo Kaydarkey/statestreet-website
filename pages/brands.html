@@ -17,6 +17,182 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── EXPAND PANEL ── */
+    .brand-expand {
+      display: none;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--grey-light);
+    }
+    .brand-expand.open { display: block; }
+
+    .expand-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+
+    .expand-about h4 {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--grey-light);
+    }
+    .expand-about p {
+      font-size: 0.95rem;
+      color: #3A3228;
+      line-height: 1.9;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+    .expand-about .brand-tagline {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--navy);
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--red);
+      display: block;
+      line-height: 1.7;
+    }
+
+    /* Socials */
+    .expand-socials {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      transition: all 0.25s;
+    }
+    .social-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    .social-btn:hover { background: var(--navy); color: var(--white); }
+    .social-btn.ig:hover { background: #E1306C; border-color: #E1306C; color: #fff; }
+    .social-btn.fb:hover { background: #1877F2; border-color: #1877F2; color: #fff; }
+
+    /* Gallery */
+    .expand-gallery h4 {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--grey-light);
+    }
+    .gallery-grid {
+      display: grid;
+      gap: 0.6rem;
+    }
+    /* 1 image */
+    .gallery-grid.count-1 { grid-template-columns: 1fr; }
+    .gallery-grid.count-1 img { aspect-ratio: 4/3; }
+
+    /* 2 images — side by side, tall */
+    .gallery-grid.count-2 { grid-template-columns: 1fr 1fr; }
+    .gallery-grid.count-2 img { aspect-ratio: 3/4; }
+
+    /* 3 images — one big top, two below */
+    .gallery-grid.count-3 { grid-template-columns: 1fr 1fr; }
+    .gallery-grid.count-3 img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+    .gallery-grid.count-3 img:not(:first-child) { aspect-ratio: 1; }
+
+    /* 4+ images — masonry-feel grid */
+    .gallery-grid.count-many { grid-template-columns: 1fr 1fr; }
+    .gallery-grid.count-many img { aspect-ratio: 4/5; }
+    .gallery-grid.count-many img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      background: var(--grey-light);
+    }
+
+    /* Toggle btn */
+    .view-more-btn {
+      margin-top: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .view-more-btn:hover { background: var(--navy); color: var(--cream); }
+    .view-more-btn.open { background: var(--navy); color: var(--cream); }
+    .vmb-arrow {
+      display: inline-block;
+      transition: transform 0.3s;
+      font-size: 0.75rem;
+      font-style: normal;
+    }
+    .view-more-btn.open .vmb-arrow { transform: rotate(180deg); }
+
+    /* brand-monogram image fix */
+    .brand-monogram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .brand-monogram img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .expand-grid { grid-template-columns: 1fr; }
+      .gallery-grid.count-2 { grid-template-columns: 1fr 1fr; }
+      .gallery-grid.count-3,
+      .gallery-grid.count-many { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -48,54 +224,207 @@
   <section class="brands-detail">
     <div class="container">
 
+      <!-- ══════════ BOULEVARD MEN ══════════ -->
       <div class="brand-detail-card">
         <div class="brand-monogram"><img src="../BoulevardMen.PNG" alt="Boulevard Men logo" /></div>
         <div class="brand-detail-info">
           <span class="brand-tag">Menswear · Est. 2016</span>
           <h2>Boulevard Men</h2>
-          <p>Where the Statestreet story began. Boulevard Men is the flagship brand of the group — a premium menswear destination built around the vision of redefining how Ghanaian men dress.</p>
-          <p>Focused on high-quality tailoring, smart-casual essentials and contemporary professional wear, Boulevard Men dresses the modern African man with confidence and distinction. Sourcing from leading international brands, every piece is curated for discerning taste.</p>
+          <p>Ghana's leading premium men's fashion house, specializing in suits, shirts, shoes, and accessories.</p>
+          <p>Carries Italian and European labels including Zecca suits, GenersoMilano, Cordone 1956 shirts, Alessandro Gherandi shirts, Harris Florence, Fratelli Bogioli and</p>
+          <p>Positioned as the go-to destination for modern gentlemen seeking quiet luxury.</p>
+
+          <button class="view-more-btn" onclick="toggleBrand('blvd-men', this)">
+            View More <em class="vmb-arrow">▼</em>
+          </button>
+
+          <div class="brand-expand" id="blvd-men">
+            <div class="expand-grid">
+              <div class="expand-about">
+                <h4>About Boulevard Menswear</h4>
+                <p>Boulevard Menswear is Ghana's leading destination for premium men's fashion, offering a carefully curated selection of suits, shirts, footwear, accessories, and lifestyle essentials sourced from some of Europe's most respected makers.</p>
+                <p>Founded on the belief that great style is a reflection of character, Boulevard Menswear serves the modern gentleman who values quality, craftsmanship, and timeless elegance. Our collections are thoughtfully selected to meet the needs of executives, entrepreneurs, professionals, and discerning men who understand that how they present themselves matters.</p>
+                <p>At Boulevard Menswear, we go beyond clothing. We provide a complete menswear experience built around personal style, expert guidance, and exceptional service. From finely tailored suits and premium business wear to contemporary smart-casual collections and luxury footwear, every piece is chosen for its quality, versatility, and enduring appeal.</p>
+                <p>Our portfolio features distinguished European brands renowned for their heritage, craftsmanship, and attention to detail. Through these partnerships, we bring world-class menswear and footwear to Ghana, making luxury and refinement more accessible to the modern gentleman.</p>
+                <p>With multiple locations and a team of dedicated style advisors, Boulevard Menswear has become a trusted destination for men seeking confidence, sophistication, and authenticity in the way they dress.</p>
+                <p>Today, Boulevard Menswear continues to set the standard for men's fashion in Ghana, helping gentlemen build wardrobes that reflect success, individuality, and timeless style.</p>
+                <span class="brand-tagline">The Leading House of Men's Elegance in Ghana.<br/>Suits. Shirts. Shoes. Accessories.<br/>Rooted in European craftsmanship. Be the man in fine clothes.</span>
+                <div class="expand-socials">
+                  <a href="https://www.instagram.com/boulevard.menswear?igsh=amZsMGZwanhtb2tl" target="_blank" rel="noopener" class="social-btn ig"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+                  <a href="https://www.facebook.com/share/1B2RqhoieZ/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn fb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+                </div>
+              </div>
+              <div class="expand-gallery">
+                <h4>Gallery</h4>
+                <div class="gallery-grid count-2">
+                  <img src="../gallery/BM3.jpeg" alt="Boulevard Men" />
+                  <img src="../gallery/BM4.jpeg" alt="Boulevard Men" />
+                  <img src="../gallery/BM1.jpeg" alt="Boulevard Men" />
+                  <img src="../gallery/BM2.jpeg" alt="Boulevard Men" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- ══════════ BOULEVARD WOMEN ══════════ -->
       <div class="brand-detail-card reverse">
         <div class="brand-monogram"><img src="../BoulevardWomen.PNG" alt="Boulevard Women logo" /></div>
         <div class="brand-detail-info">
           <span class="brand-tag">Womenswear · Contemporary</span>
           <h2>Boulevard Women</h2>
-          <p>Contemporary womenswear for the modern professional woman. Boulevard Women delivers curated collections that balance style, sophistication and everyday wearability — from boardroom essentials to weekend elegance.</p>
-          <p>Designed for Ghana's ambitious, fashion-forward women, the brand champions looks that move seamlessly from professional settings to social occasions without missing a beat.</p>
+          <p>Focused on professional women's fashion, luxury shoes, handbags, and accessories.</p>
+          <p>Offers international and curated collections tailored for the modern African executive woman.</p>
+
+          <button class="view-more-btn" onclick="toggleBrand('blvd-women', this)">
+            View More <em class="vmb-arrow">▼</em>
+          </button>
+
+          <div class="brand-expand" id="blvd-women">
+            <div class="expand-grid">
+              <div class="expand-about">
+                <h4>About Boulevard Women</h4>
+                <p>Boulevard Women is a premium fashion destination dedicated to the modern woman who values elegance, quality, and effortless style.</p>
+                <p>Located in Accra, Boulevard Women offers a carefully curated selection of luxury fashion, accessories, and lifestyle pieces sourced from respected international fashion houses. From sophisticated workwear and occasion dressing to relaxed luxury and contemporary essentials, every collection is selected with the needs of today's accomplished woman in mind.</p>
+                <p>At the heart of Boulevard Women is a belief that style should feel personal, confident, and effortless. The brand serves women who appreciate thoughtful craftsmanship, timeless design, and pieces that transition seamlessly across the different moments of life—from business meetings and social occasions to travel and leisure.</p>
+                <p>Beyond retail, Boulevard Women delivers a personalized shopping experience through its Private Styling Service, helping clients build wardrobes that reflect their lifestyles, aspirations, and individuality. Every visit is designed to feel welcoming, inspiring, and tailored to the customer.</p>
+                <p>With a distinctive blend of international luxury brands, elevated styling expertise, and a deep understanding of the modern woman's wardrobe needs, Boulevard Women continues to establish itself as one of Ghana's leading destinations for refined contemporary fashion.</p>
+                <span class="brand-tagline">Boulevard Women is where global luxury meets effortless living.</span>
+                <div class="expand-socials">
+                  <a href="https://www.instagram.com/boulevardwomengh?igsh=MWNvN2w0ZHNheGtoYg==" target="_blank" rel="noopener" class="social-btn ig"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+                  <a href="https://www.facebook.com/share/19EUeWQ5ft/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn fb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+                </div>
+              </div>
+              <div class="expand-gallery">
+                <h4>Gallery</h4>
+                <div class="gallery-grid count-2">
+                  <img src="../gallery/BW1.jpeg" alt="Boulevard Women" />
+                  <img src="../gallery/BW2.jpeg" alt="Boulevard Women" />
+                  <img src="../gallery/BW4.jpeg" alt="Boulevard Women" />
+                  <img src="../gallery/BW3.jpeg" alt="Boulevard Women" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- ══════════ D'ANGELO ══════════ -->
       <div class="brand-detail-card">
         <div class="brand-monogram" style="background: #FFDE15;"><img src="../D'angelo.JPG.jpeg" alt="D'Angelo logo" /></div>
         <div class="brand-detail-info">
           <span class="brand-tag">Clothing · Italian-Inspired</span>
           <h2>D'Angelo</h2>
-          <p>Sophisticated clothing with Italian-inspired flair. D'Angelo brings a refined European sensibility to West African fashion — offering clothing lines that pair effortless elegance with sharp, modern cuts.</p>
-          <p>The brand appeals to customers who appreciate the art of dressing well — those for whom clothing is not just utility but a statement of identity, culture and ambition.</p>
+          <p>Mid-level men's wear label specializing in suits and accessories for the average Ghanaian worker.</p>
+          <p>Recently relaunched campaign: "Inspired by You", with adjusted pricing to increase accessibility.</p>
+
+          <button class="view-more-btn" onclick="toggleBrand('dangelo', this)">
+            View More <em class="vmb-arrow">▼</em>
+          </button>
+
+          <div class="brand-expand" id="dangelo">
+            <div class="expand-grid">
+              <div class="expand-about">
+                <h4>About D'Angelo</h4>
+                <p>D'Angelo brings a refined European sensibility to West African fashion — offering clothing lines that pair effortless elegance with sharp, modern cuts.</p>
+                <p>The brand appeals to customers who appreciate the art of dressing well — those for whom clothing is not just utility but a statement of identity, culture and ambition.</p>
+                <div class="expand-socials">
+                  <a href="https://www.instagram.com/d_angeloclothing?igsh=MW9kZTlqZDlldDFiMw==" target="_blank" rel="noopener" class="social-btn ig"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+                  <a href="https://www.facebook.com/share/191TwYFJY5/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn fb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+                </div>
+              </div>
+              <div class="expand-gallery">
+                <h4>Gallery</h4>
+                <div class="gallery-grid count-3">
+                  <img src="../gallery/d'ANGELO1.jpeg" alt="D'Angelo" />
+                  <img src="../gallery/d'ANGELO2.jpeg" alt="D'Angelo" />
+                  <img src="../gallery/d'ANGELO3.jpeg" alt="D'Angelo" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- ══════════ CARBON SHOES ══════════ -->
       <div class="brand-detail-card reverse">
         <div class="brand-monogram" style="background: #111;"><img src="../Carbon.JPG.jpeg" alt="Carbon Shoes logo" /></div>
         <div class="brand-detail-info">
           <span class="brand-tag">Footwear · Premium</span>
           <h2>Carbon Shoes</h2>
-          <p>Premium footwear curated for those who understand that great style begins from the ground up. Carbon Shoes offers an edited range of men's and women's footwear — from dress shoes to smart-casual sneakers — each selected for quality, craftsmanship and enduring style.</p>
-          <p>The brand serves customers who invest in shoes that last — not just in durability, but in relevance.</p>
+          <p>A British-heritage inspired shoe boutique with a focus on craftsmanship and heritage leathers.</p>
+          <p>Positioned for convenience shopping at Palace Mall.</p>
+
+          <button class="view-more-btn" onclick="toggleBrand('carbon', this)">
+            View More <em class="vmb-arrow">▼</em>
+          </button>
+
+          <div class="brand-expand" id="carbon">
+            <div class="expand-grid">
+              <div class="expand-about">
+                <h4>About Carbon Shoes</h4>
+                <p>Carbon Shoes is the destination for professionals who value quality, style, and practicality. Built for the modern executive, Carbon offers a carefully curated collection of footwear designed to meet the demands of work, business, social occasions, and everyday life.</p>
+                <p>At Carbon, we believe that great shoes should enhance confidence without requiring a luxury-store budget. Our collections combine timeless design, comfort, durability, and value, making quality executive footwear more accessible to ambitious professionals who are building their careers, businesses, and personal brands.</p>
+                <p>From formal office shoes and sophisticated loafers to versatile smart-casual styles, every pair is selected to help our customers make a lasting impression wherever they go. Whether you're heading into a boardroom, attending a special event, or navigating your daily routine, Carbon provides footwear that complements your lifestyle and supports your ambitions.</p>
+                <p>More than a shoe store, Carbon Shoes is committed to helping professionals step forward with confidence. Through quality products, expert guidance, and exceptional customer service, we aim to be the trusted footwear authority for the modern executive.</p>
+                <span class="brand-tagline">Carbon Shoes — Quality Shoes. Within Reach.</span>
+                <div class="expand-socials">
+                  <a href="https://www.instagram.com/carbonshoesghana?igsh=aWtlMDYyMnNnczE3" target="_blank" rel="noopener" class="social-btn ig"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+                  <a href="https://www.facebook.com/share/1E8vubnaYn/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn fb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+                </div>
+              </div>
+              <div class="expand-gallery">
+                <h4>Gallery</h4>
+                <div class="gallery-grid count-3">
+                  <img src="../gallery/carbon1.JPG.jpeg" alt="Carbon Shoes" />
+                  <img src="../gallery/carbon2.JPG.jpeg" alt="Carbon Shoes" />
+                  <img src="../gallery/carbon3.JPG.jpeg" alt="Carbon Shoes" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-
+      <!-- ══════════ WOODPECKERS ══════════ -->
       <div class="brand-detail-card reverse">
         <div class="brand-monogram" style="background: #ffffff;"><img src="../Woodpeckers.PNG" alt="WoodPeckers logo" /></div>
         <div class="brand-detail-info">
           <span class="brand-tag">Lifestyle · Since 1972</span>
           <h2>WoodPeckers</h2>
-          <p>Woodpeckers is Ghana's exclusive destination for premium sneakers and contemporary streetwear, defining the intersection of luxury, culture, and urban style</p>
-          <p>Specializing in limited-edition footwear from leading global brands such as Nike, Adidas, and Yeezy, the brand also offers a curated selection of streetwear apparel including graphic tees, hoodies, and essential accessories like caps, socks, and backpacks. Designed for a youthful, trend-driven audience that thrives on hype culture and social expression, Woodpeckers stands at the forefront of Ghana’s sneaker scene—bold, innovative, and unmistakably authentic in its identity.</p>
+          <p>A youth-driven brand focusing on sneakers, athleisure, and streetwear,</p>
+          <p>Appeals to Ghana's fast-growing Gen Z and millennial consumer base.</p>
+
+          <button class="view-more-btn" onclick="toggleBrand('woodpeckers', this)">
+            View More <em class="vmb-arrow">▼</em>
+          </button>
+
+          <div class="brand-expand" id="woodpeckers">
+            <div class="expand-grid">
+              <div class="expand-about">
+                <h4>About WoodPeckers</h4>
+                <p>Woodpeckers is a premium sneaker and streetwear destination built for people who understand that style is more than what you wear—it's how you move.</p>
+                <p>From iconic sneaker silhouettes and sought-after releases to carefully curated streetwear, every piece at Woodpeckers is selected for individuals who value originality, culture, and personal expression.</p>
+                <p>More than a store, Woodpeckers is a hub for the culture. A place where sneaker enthusiasts, creatives, trendsetters, and everyday style-conscious individuals come to discover the latest arrivals, elevate their rotation, and connect with what is happening in fashion and street culture.</p>
+                <p>Our collections bring together globally recognised brands, standout designs, and versatile essentials that fit seamlessly into modern lifestyles. Whether you're searching for a statement pair, an everyday favourite, or a complete look, Woodpeckers offers products chosen with purpose and relevance.</p>
+                <p>At Woodpeckers, we believe great style should feel effortless, authentic, and connected to the rhythm of the city.</p>
+                <span class="brand-tagline">WEAR WHAT MOVES THE CITY.<br/>CONNECT TO THE RHYTHM OF THE CITY.</span>
+                <div class="expand-socials">
+                  <a href="https://www.instagram.com/woodpeckers_gh?igsh=MTRqcXFjY2NnNGFncw==" target="_blank" rel="noopener" class="social-btn ig"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram</a>
+                  <a href="https://www.facebook.com/share/19EUeWQ5ft/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-btn fb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook</a>
+                </div>
+              </div>
+              <div class="expand-gallery">
+                <h4>Gallery</h4>
+                <div class="gallery-grid count-3">
+                  <img src="../gallery/woodpeckers1.jpeg" alt="WoodPeckers" />
+                  <img src="../gallery/woodpeckers2.jpeg" alt="WoodPeckers" />
+                  <img src="../gallery/woodpeckers3.jpeg" alt="WoodPeckers" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -137,11 +466,9 @@
           <p>Phone:<br /><a href="tel:+233559824024">+233 55 9824024</a></p>
           <p>Our Location:<br />24 Blohum Road, Dzorwulu, Accra-Ghana</p>
           <p>Follow Us:<br />
-            <!-- Instagram -->
             <a href="https://www.instagram.com/statestreet.retailgroup" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-            <!-- TikTok -->
             <a href="https://www.tiktok.com/@statestreetretailgroup?is_from_webapp=1&sender_device=pcheir" target="_blank" rel="noopener" class="footer-social-btn" aria-label="TikTok">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
             </a>
@@ -157,11 +484,27 @@
 
   <script src="../js/nav.js"></script>
   <script src="../js/animations.js"></script>
+  <script>
+    function toggleBrand(id, btn) {
+      const panel = document.getElementById(id);
+      const isOpen = panel.classList.contains('open');
+
+      // Close all panels
+      document.querySelectorAll('.brand-expand').forEach(p => p.classList.remove('open'));
+      document.querySelectorAll('.view-more-btn').forEach(b => {
+        b.classList.remove('open');
+        b.innerHTML = 'View More <em class="vmb-arrow">▼</em>';
+      });
+
+      if (!isOpen) {
+        panel.classList.add('open');
+        btn.classList.add('open');
+        btn.innerHTML = 'View Less <em class="vmb-arrow">▼</em>';
+        setTimeout(() => {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
-
