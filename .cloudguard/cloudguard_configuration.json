@@ -1,0 +1,221 @@
+{
+  "alerts": {
+    "alert_thresholds": [
+      {
+        "severity": "critical"
+      },
+      {
+        "severity": "high"
+      }
+    ],
+    "email_enabled": false,
+    "enable_quiet_hours": true,
+    "notification_email": "",
+    "quiet_hours_end": "08:00:00",
+    "quiet_hours_start": "22:00:00",
+    "settings_saved": true,
+    "severity_routing": {
+      "critical": [
+        "sms",
+        "pagerduty"
+      ],
+      "high": [
+        "email",
+        "slack"
+      ],
+      "medium_low": [
+        "email"
+      ]
+    },
+    "slack_enabled": true,
+    "slack_webhook": "[REDACTED]",
+    "sms_enabled": false,
+    "sms_number": ""
+  },
+  "auth": {
+    "credentials_validated": true,
+    "email": "darkeykafui@gmail.com",
+    "github_branch": "main",
+    "github_config_path": ".cloudguard/cloudguard_configuration.json",
+    "github_connected": true,
+    "github_email": "",
+    "github_repo": "Kaydarkey/statestreet-website",
+    "github_username": "",
+    "logging_viewer": true,
+    "monitor_permission": true,
+    "oauth_provider": "Google OAuth 2.0",
+    "organization_id": null,
+    "security_reviewer": true
+  },
+  "current_step": 5,
+  "environment": {
+    "cloud_platform": "Google Cloud Platform",
+    "config_applied": true,
+    "environment_classifications": [
+      {
+        "confidence": 100,
+        "environment": "Production",
+        "included": true,
+        "project_name": "cloudguard-495511"
+      }
+    ],
+    "monitor_all_environments": true,
+    "monitor_production_only": false,
+    "projects_selected": "1 Project"
+  },
+  "final_review": {
+    "alerts_configured": true,
+    "api_quota_safe": true,
+    "branch": "main",
+    "detection_configured": true,
+    "enable_security_command_center": true,
+    "file_path": ".cloudguard/cloudguard_configuration.json",
+    "oauth_complete": true,
+    "repo_full_name": "Kaydarkey/statestreet-website",
+    "scope_selected": true,
+    "start_monitoring_immediately": true
+  },
+  "gcp_project_id": "cloudguard-495511",
+  "gcp_scope": {
+    "cloud_platform": "Google Cloud Platform",
+    "credentials_validated": true,
+    "email": "darkeykafui@gmail.com",
+    "folders": [],
+    "gcp_project_id": "cloudguard-495511",
+    "organization_id": null,
+    "project_id": "cloudguard-495511",
+    "projects": [
+      {
+        "project_id": "cloudguard-495511",
+        "project_name": "CloudGuard",
+        "selected": true
+      }
+    ],
+    "quota_safe": true,
+    "selected_org": null,
+    "selected_resources": [
+      "bigquery.googleapis.com",
+      "logging.googleapis.com",
+      "monitoring.googleapis.com",
+      "pubsub.googleapis.com",
+      "storage.googleapis.com"
+    ]
+  },
+  "monitoring": {
+    "baseline_period": "7 Days",
+    "detection_sensitivity": "HIGH",
+    "enable_behavioral_analysis": true,
+    "enable_logging_sink": true,
+    "environment": "production",
+    "gcp_project_id": "cloudguard-495511",
+    "monitored_project": "cloudguard-495511",
+    "monitored_resources": [
+      "bigquery.googleapis.com",
+      "logging.googleapis.com",
+      "monitoring.googleapis.com",
+      "pubsub.googleapis.com",
+      "storage.googleapis.com"
+    ],
+    "project_id": "cloudguard-495511",
+    "provisioned_resources": {
+      "enableBigQuery": true,
+      "enableCloudArmor": false,
+      "enableCloudLogging": false,
+      "enableCloudMonitoring": false,
+      "enableEventThreatDetection": false,
+      "enableSecurityCommandCenter": true,
+      "enableVpcFlowLogs": false
+    },
+    "resource_configurations": {
+      "enableBigQuery": {
+        "auditLogTypes": [
+          "Data Read",
+          "Data Write",
+          "Admin Activity"
+        ],
+        "authorisedViews": "cloudguard:dataset.view1",
+        "datasetId": "cloudguard_audit",
+        "maxBytesBilled": "10",
+        "queryAnomalyAlerts": "yes",
+        "tableExpiry": "365"
+      },
+      "enableCloudArmor": {
+        "defaultRuleAction": "allow",
+        "ipAllowlist": "",
+        "ipBlocklist": "",
+        "owaspRules": [
+          "SQL Injection",
+          "XSS"
+        ],
+        "policyName": "",
+        "rateLimit": "1000"
+      },
+      "enableCloudLogging": {
+        "bigQueryExport": "no",
+        "errorRateThreshold": "5",
+        "filterExpression": "",
+        "logBucketName": "",
+        "logTypes": [
+          "Admin Activity",
+          "Data Access"
+        ],
+        "retentionPeriod": "30"
+      },
+      "enableCloudMonitoring": {
+        "alertChannels": [
+          "Email",
+          "Slack"
+        ],
+        "anomalySensitivity": "medium",
+        "dashboardName": "",
+        "metricsScope": "project",
+        "thresholdDuration": "5",
+        "uptimeCheckInterval": "1"
+      },
+      "enableEventThreatDetection": {
+        "customRuleJson": "",
+        "detectionHistoryDays": "90",
+        "detectors": [
+          "Brute Force SSH",
+          "Cryptomining"
+        ],
+        "notificationChannel": "email",
+        "notificationTarget": "",
+        "severityThreshold": "medium"
+      },
+      "enableSecurityCommandCenter": {
+        "autoMuteLowSeverity": "no",
+        "findingCategories": [
+          "Vulnerabilities",
+          "Misconfigurations",
+          "IAM Anomalies"
+        ],
+        "minimumSeverity": "high",
+        "notificationEmail": "darkeykafui@gmail.com",
+        "pubSubExport": "projects/cloudguard-495511/topics/cloudguard",
+        "sccTier": "standard"
+      },
+      "enableVpcFlowLogs": {
+        "aggregationInterval": "30s",
+        "alertOn": [
+          "Lateral Movement",
+          "Unusual Egress"
+        ],
+        "includeMetadata": "include",
+        "logSink": "logging",
+        "samplingRate": "0.5",
+        "targetSubnet": "all"
+      }
+    },
+    "rules_applied": true,
+    "threat_types": {
+      "anomalous_login": true,
+      "bruteforce_detection": false,
+      "data_exfiltration": true,
+      "iam_escalation": false
+    }
+  },
+  "organization_id": null,
+  "project_id": "cloudguard-495511",
+  "type": "cloud-guard"
+}
