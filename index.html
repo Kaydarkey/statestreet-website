@@ -17,6 +17,71 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── WHY PARTNER SECTION ── */
+    .partner-section { background: var(--cream); }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 3rem;
+      background: var(--navy);
+    }
+
+    .partner-card {
+      background: var(--navy-deep);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .partner-card:hover { background: var(--navy-mid); }
+
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .partner-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+      font-style: normal;
+    }
+
+    .partner-card p {
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.65);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* Last two cards span to fill row evenly */
+    .partner-card:nth-child(4),
+    .partner-card:nth-child(5) {
+      grid-column: span 1;
+    }
+
+    /* Bottom row: 2 cards centred — achieved via wrapper */
+    .partner-grid-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      background: var(--navy);
+    }
+
+    @media (max-width: 900px) {
+      .partner-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .partner-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -145,38 +210,39 @@
         <a href="pages/brands.html" class="brand-card">
           <div class="brand-card__icon"><img src="BoulevardMen.PNG" alt="Boulevard Men logo" /></div>
           <h3>Boulevard Men</h3>
-          <p>Ghana's leading premium men's fashion house, specializing in suits, shirts, shoes, and accessories.</p>
-          <p>Carries Italian and European labels including Zecca suits, GenersoMilano, Cordone 1956 shirts, Alessandro Gherandi shirts, Harris</p>
-          <p>Florence, Fratelli Bogioli and</p>
-          <p>Positioned as the go-to destination for modern gentlemen seeking quiet luxury.</p>
+          <p>The Leading House of Men’s Elegance in Ghana</p>
+          <p>Suits, shirts, shoes & accessories</p>
+          <p>Rooted in European craftsmanship</p>
+          <p>Be the man in fine clothes.</p>
           <span class="brand-card__arrow">→</span>
         </a>
         <a href="pages/brands.html" class="brand-card">
           <div class="brand-card__icon"><img src="BoulevardWomen.PNG" alt="Boulevard Women logo" /></div>
           <h3>Boulevard Women</h3>
-          <p>Focused on professional women's fashion, luxury shoes, handbags, and accessories.
-             Offers international and curated collections tailored for the modern African executive woman.</p>
+          <p>For the woman who wears her confidence with style. 
+           Offers international and curated collections tailored for the modern African executive woman.</p>
           <span class="brand-card__arrow">→</span>
         </a>
         <a href="pages/brands.html" class="brand-card">
           <div class="brand-card__icon"><img src="D'angelo.JPG.jpeg" alt="D'Angelo logo" /></div>
           <h3>D'Angelo</h3>
-          <p>Mid-level men's wear label specializing in suits and accessories for the average Ghanaian worker.
-             Recently relaunched campaign: "Inspired by You", with adjusted pricing to increase accessibility..</p>
+          <p>Versatile menswear for the modern professional.
+              Style, quality & value — made accessible.</p>
           <span class="brand-card__arrow">→</span>
         </a>
         <a href="pages/brands.html" class="brand-card">
           <div class="brand-card__icon"><img src="Carbon.JPG.jpeg" alt="Carbon Shoes logo" /></div>
           <h3>Carbon Shoes</h3>
-          <p>A British-heritage inspired shoe boutique with a focus on craftsmanship and heritage leathers.
-            Positioned for convenience shopping at Palace Mall..</p>
+          <p>British heritage. Modern refinement
+            Shoes designed to last and lead
+            For men who stand apart without announcing it.</p>
           <span class="brand-card__arrow">→</span>
         </a>
         <a href="pages/brands.html" class="brand-card">
           <div class="brand-card__icon"><img src="Woodpeckers.PNG" alt="WoodPeckers logo" /></div>
           <h3>WoodPeckers</h3>
-          <p>A youth-driven brand focusing on sneakers, athleisure, and streetwear,
-            Appeals to Ghana's fast-growing Gen Z and millennial consumer base.</p>
+          <p>Your go-to destination for premium quality & exclusive sneakers & streetwear in Ghana.
+              Affordable Luxury, Bold & Innovative.</p>
           <span class="brand-card__arrow">→</span>
         </a>
       </div>
@@ -199,6 +265,36 @@
             <strong>Hiring</strong>
             <span>Now</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PARTNER WITH STATESTREET -->
+  <section class="partner-section section section--dark">
+    <div class="container">
+      <p class="section-label light">Partnerships</p>
+      <h2 class="section-title">Why Partner with Statestreet?</h2>
+      <div class="partner-grid">
+        <div class="partner-card">
+          <h3>Expansion Drive:</h3>
+          <p>Targeting 15 stores in the next 3 years, with over 20M GHS investment earmarked.</p>
+        </div>
+        <div class="partner-card">
+          <h3>Customer Reach:</h3>
+          <p>Access to an affluent and growing consumer base in one of Africa's fastest-growing economies.</p>
+        </div>
+        <div class="partner-card">
+          <h3>Established Market Presence:</h3>
+          <p>A decade-long footprint with 10 operational stores in prime Ghanaian locations.</p>
+        </div>
+        <div class="partner-card">
+          <h3>Luxury DNA:</h3>
+          <p>Focus on Made in Italy craftsmanship and authentic European fashion positioning.</p>
+        </div>
+        <div class="partner-card">
+          <h3>Professional Team:</h3>
+          <p>Experienced management bridging international partnerships with African market realities.</p>
         </div>
       </div>
     </div>
@@ -239,11 +335,9 @@
           <p>Phone:<br /><a href="tel:+233559824024">+233 55 9824024</a></p>
           <p>Our Location:<br />24 Blohum Road, Dzorwulu, Accra-Ghana</p>
           <p>Follow Us:<br />
-            <!-- Instagram -->
             <a href="https://www.instagram.com/statestreet.retailgroup" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-            <!-- TikTok -->
             <a href="https://www.tiktok.com/@statestreetretailgroup?is_from_webapp=1&sender_device=pcheir" target="_blank" rel="noopener" class="footer-social-btn" aria-label="TikTok">
               <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
             </a>
@@ -261,8 +355,3 @@
   <script src="js/animations.js"></script>
 </body>
 </html>
-
-
-
-
-
